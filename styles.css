@@ -1,0 +1,109 @@
+/* 独立网页版的外壳：宿主主题 token 的默认值 + iPad 安全区 / 触屏尺寸 */
+:root {
+  color-scheme: light;
+  --dsw-font-family: "PingFang SC", "HarmonyOS Sans SC", "MiSans", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --dsw-alias-bg-base: #f5f7fb;
+  --dsw-alias-bg-layer-1: #ffffff;
+  --dsw-alias-bg-layer-2: #eef1f7;
+  --dsw-alias-bg-overlay: #ffffff;
+  --dsw-alias-border-l1: rgba(24, 34, 66, .10);
+  --dsw-alias-interactive-bg-hover: rgba(24, 34, 66, .07);
+  --dsw-alias-label-primary: #1c2332;
+  --dsw-alias-label-secondary: #59637a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --dsw-alias-bg-base: #0e1016;
+    --dsw-alias-bg-layer-1: #191c24;
+    --dsw-alias-bg-layer-2: #222632;
+    --dsw-alias-bg-overlay: #1d212b;
+    --dsw-alias-border-l1: rgba(255, 255, 255, .14);
+    --dsw-alias-interactive-bg-hover: rgba(255, 255, 255, .08);
+    --dsw-alias-label-primary: #eef1f8;
+    --dsw-alias-label-secondary: #a7b0c2;
+  }
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  background: var(--dsw-alias-bg-base);
+  color: var(--dsw-alias-label-primary);
+  font-family: var(--dsw-font-family);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+#root { height: 100%; }
+body button { touch-action: manipulation; }
+
+/* iPad / iPhone 安全区（配合 viewport-fit=cover） */
+body .kc-top {
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  left: calc(12px + env(safe-area-inset-left, 0px));
+  right: calc(12px + env(safe-area-inset-right, 0px));
+}
+body .kc-dock {
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  left: calc(12px + env(safe-area-inset-left, 0px));
+  right: calc(12px + env(safe-area-inset-right, 0px));
+}
+body .kc-score { top: calc(70px + env(safe-area-inset-top, 0px)); }
+body .kc-root.is-loupe .kc-score { top: calc(122px + env(safe-area-inset-top, 0px)); }
+body .kc-zoomctl { top: calc(70px + env(safe-area-inset-top, 0px)); }
+
+/* 触屏：把常用按钮放大一点，方便小朋友点 */
+@media (pointer: coarse) {
+  body .kc-iconbtn { width: 42px; height: 42px; }
+  body .kc-mode { height: 42px; }
+  body .kc-swatch { width: 36px; height: 36px; }
+  body .kc-chip { width: 36px; height: 36px; }
+  body .kc-stamp { width: 38px; height: 38px; }
+  body .kc-scenebtn { width: 36px; height: 36px; }
+  body .kc-bgcolor { width: 30px; height: 30px; }
+  body .kc-segbtn { height: 34px; min-width: 40px; }
+  body .kc-zoombtn { width: 40px; height: 40px; }
+  body .kc-textbtn { width: 38px; height: 38px; }
+}
+
+/* 底部工具面板：允许收缩到视口宽，避免贴纸多时整块溢出屏幕 */
+body .kc-dock-card { min-width: 0; }
+body .kc-controls { min-width: 0; }
+body .kc-row { min-width: 0; }
+
+/* 彩虹色块：按钮 reset 的 background:none 会盖掉组件里的单类规则，这里提一级 */
+body .kc-root button.kc-swatch--rainbow {
+  background: conic-gradient(#ff5d73, #ff9f43, #ffd93d, #57c785, #3fc9d1, #4d96ff, #9b6bff, #ff8ad8, #ff5d73) !important;
+  background-size: cover !important;
+}
+
+/* iPad 768 宽：藏掉品牌名，给模式和工具让位 */
+@container kc (max-width: 800px) {
+  body .kc-brand-name { display: none; }
+  body .kc-brand { padding: 0 10px; }
+}
+/* 手机宽度：压缩顶部，避免模式按钮被挤扁 */
+@container kc (max-width: 430px) {
+  body .kc-iconbtn { width: 30px; height: 32px; border-radius: 9px; }
+  body .kc-mode { padding: 0 8px; min-width: 32px; }
+  body .kc-top-tools { padding: 3px; gap: 0; }
+  body .kc-modes { padding: 4px; gap: 2px; }
+}
+body .kc-mode, body .kc-modes { flex: none; }
+
+/* iPad 触屏：写字输入框固定在顶部中间，避免被软键盘挡住 */
+@media (pointer: coarse) {
+  body .kc-textedit {
+    top: calc(96px + env(safe-area-inset-top, 0px)) !important;
+    left: 50% !important;
+    transform: translate(-50%, 0) !important;
+    animation: none !important;
+  }
+}

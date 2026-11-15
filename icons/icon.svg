@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="小画家">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bfe7ff"/>
+      <stop offset="0.62" stop-color="#e8f7ff"/>
+      <stop offset="1" stop-color="#fff3cf"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a9e08f"/>
+      <stop offset="1" stop-color="#7cc96a"/>
+    </linearGradient>
+  </defs>
+  <rect x="5" y="5" width="118" height="118" rx="30" fill="url(#sky)"/>
+  <circle cx="99" cy="33" r="12" fill="#ffd93d"/>
+  <circle cx="99" cy="33" r="7" fill="#fff3a8"/>
+  <path d="M5 96 Q 34 76 62 94 T 123 92 L123 99 Q123 123 99 123 L29 123 Q5 123 5 99 Z" fill="url(#hill)"/>
+  <path d="M25 88 A 39 39 0 0 1 103 88" fill="none" stroke="#ff5d73" stroke-width="9" stroke-linecap="round"/>
+  <path d="M37 88 A 27 27 0 0 1 91 88" fill="none" stroke="#ffbd2e" stroke-width="9" stroke-linecap="round"/>
+  <path d="M49 88 A 15 15 0 0 1 79 88" fill="none" stroke="#4d96ff" stroke-width="9" stroke-linecap="round"/>
+  <path d="M28 32 l2.6 6.2 6.2 2.6 -6.2 2.6 -2.6 6.2 -2.6 -6.2 -6.2 -2.6 6.2 -2.6 z" fill="#fffdf2" opacity="0.95"/>
+</svg>
