@@ -3477,7 +3477,7 @@
 .kc-swatch {
   width: 32px;
   height: 32px;
-  border-radius: 9px;
+  border-radius: 3px;
   flex: none;
   position: relative;
   box-shadow: inset 0 0 0 1px rgba(20, 20, 40, .14), 0 1px 2px rgba(20, 20, 40, .12);
